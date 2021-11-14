@@ -28,6 +28,8 @@ class Task {
           weight: weight ?? this.weight,
           id: id ?? this.id);
 
+//  tomap convert Task to Json format
+
   Map<String, dynamic> tomap() {
     return {
       "description": description,
@@ -35,6 +37,8 @@ class Task {
       "completed": completed ? 1 : 0
     };
   }
+
+// fromMap convert Json to Task
 
   factory Task.fromMap(Map<String, dynamic> fMap) {
     return Task(
@@ -45,6 +49,7 @@ class Task {
   }
 }
 
+//  this class is use to implement the persistence of Task in a local database
 class Sqflitehelper {
   Database? db;
   String tableName = 'Tasktable';

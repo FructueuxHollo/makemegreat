@@ -12,9 +12,11 @@ class ToDo extends StatefulWidget {
 }
 
 class _ToDoState extends State<ToDo> {
+  // declaration of some variables
   final Sqflitehelper helper = Sqflitehelper();
   var _todo = <Task>[];
   bool isLoading = true;
+  // the ordonneur function is use to make important Task first in the Task's array _todo
   void ordonneur() {
     Task temp;
     for (int i = 0; i < _todo.length; i++) {
@@ -38,6 +40,7 @@ class _ToDoState extends State<ToDo> {
     isLoading = false;
   }
 
+//  refreshTask is used in initstate to load Task from the local database
   @override
   void initState() {
     super.initState();
@@ -79,38 +82,7 @@ class _ToDoState extends State<ToDo> {
                                 Icons.delete,
                                 color: Colors.blue,
                               ))
-                          : PopupMenuButton(
-                              initialValue: _todo[index],
-                              itemBuilder: (context) => [
-                                    PopupMenuItem(
-                                        child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            const Icon(Icons.delete),
-                                            TextButton(
-                                              child: const Text('supprimer'),
-                                              onPressed: () async {
-                                                await helper
-                                                    .delete(_todo[index].id);
-                                                await refreshTask();
-                                              },
-                                            )
-                                          ],
-                                        ),
-                                        const Divider(),
-                                        Row(
-                                          children: const [
-                                            Icon(Icons.edit),
-                                            TextButton(
-                                              child: Text('modifier'),
-                                              onPressed: null,
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ))
-                                  ]),
+                          : null,
                       controlAffinity: ListTileControlAffinity.leading,
                       subtitle: Text(_todo[index].weight.toString()),
                       title: Text(

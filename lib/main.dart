@@ -32,10 +32,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // the array _page contain the different page of the bottomappbar
   final _pageList = <Widget>[
-    const NoteBook(
-      title: 'NoteBook',
-    ),
+    const NoteBook(title: 'NoteBook'),
     const ToDo(title: 'To-Do'),
     const VisionTable(title: 'DreamSpace')
   ];
