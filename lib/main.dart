@@ -40,7 +40,6 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   int selectedindex = 1;
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(child: _pageList.elementAt(selectedindex)),
