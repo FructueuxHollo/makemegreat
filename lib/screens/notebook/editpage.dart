@@ -54,10 +54,11 @@ class _EditPageState extends State<EditPage> {
                         title: _title!.trim().isEmpty ? 'sans titre' : _title,
                         isfavorite: _isfavorite);
                     () async {
-                      await saver.insert(note);
+                      if (note != null) {
+                        await saver.insert(note);
+                      }
+                      Navigator.pop(context, note);
                     };
-
-                    Navigator.pop(context, note);
                   }
                 },
                 icon: const Icon(Icons.save)),

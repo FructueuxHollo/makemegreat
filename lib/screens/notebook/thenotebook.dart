@@ -36,16 +36,6 @@ class _NoteBookState extends State<NoteBook> {
                 margin: const EdgeInsets.all(05),
                 child: GestureDetector(
                   onTap: null,
-                  // () async {
-                  //   notes[index] = await Navigator.push(context,
-                  //       MaterialPageRoute<Notes>(
-                  //           builder: (BuildContext context) {
-                  //     return PageNote(
-                  //       note: notes[index],
-                  //     );
-                  //   }));
-                  //   setState(() {});
-                  // },
                   child: Card(
                     elevation: 5,
                     child: Column(
@@ -71,12 +61,11 @@ class _NoteBookState extends State<NoteBook> {
                             )
                           ],
                         ),
-                        Container(
+                        SizedBox(
                           width: 150,
                           height: 100,
                           child: Text(
                             notes[index].content,
-                            // overflow: TextOverflow.ellipsis,
                           ),
                         ),
                         Row(
@@ -102,12 +91,11 @@ class _NoteBookState extends State<NoteBook> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () async {
+          onPressed: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) {
               return const EditPage();
             }));
-            refreshNotes();
           },
           child: const Icon(Icons.note_add_rounded),
         ));
